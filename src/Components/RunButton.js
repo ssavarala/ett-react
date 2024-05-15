@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import {Button, Navbar, Nav, NavDropdown, Form, FormControl, Row, Col, Spinner, Container, Card, Accordion  } from 'react-bootstrap';
+import React, {Component} from 'react'
+import {Accordion, Card, Col, Container, Row, Spinner} from 'react-bootstrap';
+import {Button} from "@mui/material";
 import axios from 'axios'
-import Counter from './Counter'
 import './RunButton.css'
+
 class RunButton extends Component {
    
     constructor(props) {
@@ -30,13 +31,14 @@ class RunButton extends Component {
         this.setState({ loading : true});
         let testrequest = {
 
-        sutEmailAddress: this.props.myObj.email,
-        sutSmtpAddress: this.props.myObj.hostname,
-        testCaseNumber: this.props.id,
-        sutPassword: this.props.myObj.password,
-        sutUserName: this.props.myObj.username,
-        useTLS: true
-    };
+            sutEmailAddress: this.props.myObj.email,
+            sutSmtpAddress: this.props.myObj.hostname,
+            testCaseNumber: this.props.id,
+            sutPassword: this.props.myObj.password,
+            sutUserName: this.props.myObj.username,
+            ccdaFileLink: "",
+            useTLS: true,
+        };
     console.log(testrequest)
 		axios
 			.post('/ett/api/smtpTestCases', testrequest)
@@ -65,19 +67,18 @@ class RunButton extends Component {
 
 
         if(error){
-            finalbutton = <div className="d-grid gap-2"><Button size="lg" variant="danger" type="button">
+            finalbutton = <div className="d-grid gap-2"><Button variant="outlined" color="error">
             <span>{"Test Failed"}</span>
             </Button> 
-            <Button size="lg" variant="info" type="button" onClick={this.onResetClick.bind(this)}>
+            <Button color="secondary" onClick={this.onResetClick.bind(this)}>
             {error && !loading && <span>Clear</span>}
             </Button></div>
         }
-
         if(result && !loading){
-            finalbutton = <div className="d-grid gap-2"><Button size="lg" variant="success" type="button">
+            finalbutton = <div className="d-grid gap-2"><Button variant="contained" color="success">
             <span>{"Success"}</span>
             </Button>
-            <Button size="lg" variant="info" type="button" onClick={this.onResetClick.bind(this)}>
+            <Button color="secondary" onClick={this.onResetClick.bind(this)}>
             {result && !loading && <span>Clear</span>}
             </Button></div>
         }
@@ -119,7 +120,7 @@ class RunButton extends Component {
     </Col>
     <Col>
     <div className="d-grid gap-2">
-    <Button size="lg" variant="primary" type="button" onClick={this.submitHandler.bind(this)} disabled={loading} hidden={result || error}>
+    <Button variant="contained" size="large" onClick={this.submitHandler.bind(this)} disabled={loading} hidden={result || error}>
         {!loading && !result && !error && <span>RUN</span>}
   {result && !loading && <span>{"Test Passed"}</span>}
   {loading && (

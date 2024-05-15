@@ -1,15 +1,8 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import Greet from './Components/Greet'
-import Welcome from './Components/Welcome'
-import Hello from './Components/Hello'
-import Message from './Components/Message'
 import Counter from './Components/Counter'
 import Xdr from './Components/Xdr'
 import EttHome from './Components/EttHome'
-import PostList from './Components/PostList'
-import FunctionClick from './Components/FunctionClick'
 import {Nav, Navbar} from 'react-bootstrap'
 import {BrowserRouter, Link, NavLink, Redirect, Route, Switch} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
