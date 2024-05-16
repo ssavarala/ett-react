@@ -1,0 +1,38 @@
+/* Basic styles for the SendDirectMessage component */
+
+.card {
+    margin-top: 20px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.button-toolbar {
+    margin-bottom: 20px;
+}
+
+.button-group .btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.btn-primary {
+    margin-top: 20px;
+}
